@@ -307,7 +307,7 @@ SHOPPING DIARY
 .delete-btn:hover {
   color: var(--clr-red-dark);
 }
-.clear-btn {
+/* .clear-btn {
   text-transform: capitalize;
   width: 10rem;
   height: 1.5rem;
@@ -322,7 +322,30 @@ SHOPPING DIARY
   cursor: pointer;
   transition: var(--transition);
   margin-top: 1.25rem;
-}
-.clear-btn:hover {
+} */
+
+/* .print-invoice-btn {
+  text-transform: capitalize;
+  width: 10rem;
+  height: 1.5rem;
+  display: grid;
+  align-items: center;
+  background: transparent;
+  border-color: transparent;
+  color: green;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  letter-spacing: var(--spacing);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 1.25rem;
+} */
+/* .clear-btn:hover {
   color: var(--clr-red-dark);
+} */
+
+
+.newDiv {
+  background-color:red; font-size:2em;
+
 }
