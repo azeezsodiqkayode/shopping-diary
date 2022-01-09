@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -17,7 +18,7 @@
       <!-- form -->
       <form class="shopping-form">
         <p class="alert"></p>
-        <h3>shopping Diary</h3>
+        <h3>Shopping Diary</h3>
         <div class="form-control">
           <input type="text" id="shopping" placeholder="e.g. Bag" />
           <button type="submit" class="submit-btn">submit</button>
@@ -26,9 +27,41 @@
       <!-- list -->
       <div class="shopping-container">
         <div class="shopping-list"></div>
-        <button class="clear-btn">clear items</button>
+       <!-- <button class="clear-btn">clear items</button> -->
+       <!-- <button class="print-invoice-btn">Print invoice</button>  -->
+       <br /><br />
+        <button type="button" class="clear-btn btn btn-secondary" data-bs-dismiss="modal">Clear Items</button>
+        <button type="button" class="print-invoice-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">View Diary</button>
+        
       </div>
     </section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MY SHOPPING DIARY</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="shopping-diary-display modal-body" id="shopping-diary-display">
+        <table class="table table-striped" id="dashTable">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">check</th>
+              </tr>
+          </thead>
+          <tbody id="task-row">    
+          </tbody>
+      </table>
+      </div>
+     
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- javascript -->
     <script src="app.js"></script>
   </body>

@@ -7,6 +7,8 @@ const submitBtn = document.querySelector(".submit-btn");
 const container = document.querySelector(".shopping-container");
 const list = document.querySelector(".shopping-list");
 const clearBtn = document.querySelector(".clear-btn");
+const printInvoiceBtn = document.querySelector(".print-invoice-btn");
+const diaryDisplay = document.querySelector(".shopping-diary-display")
 // edit option
 let editElement;
 let editFlag = false;
@@ -17,6 +19,8 @@ let editID = "";
 form.addEventListener("submit", addItem);
 // clear list
 clearBtn.addEventListener("click", clearItems);
+//print invoice
+printInvoiceBtn.addEventListener("click", printDiary);
 // display items onload
 window.addEventListener("DOMContentLoaded", setupItems);
 
@@ -25,8 +29,18 @@ window.addEventListener("DOMContentLoaded", setupItems);
 // add item
 function addItem(e) {
   e.preventDefault();
-  const value = shopping.value;
+  const value = shopping.value.toUpperCase();
+  /* 
+  check if the item has been added before, if yes, 
+  tell user cannot same item else add it
+  */
   const id = new Date().getTime().toString();
+  let data =  JSON.parse(localStorage.getItem("list"))
+  for (let i in data) {
+    if (data[i].value == value) {
+      return displayAlert("This item exists in the list", "danger");
+    }
+  }
 
   if (value !== "" && !editFlag) {
     const element = document.createElement("article");
@@ -137,7 +151,6 @@ function deleteItem(e) {
   removeFromLocalStorage(id);
 }
 
-
 // ****** local storage **********
 
 // add to local storage
@@ -159,7 +172,26 @@ function editLocalStorage(id, value) {
   });
   localStorage.setItem("list", JSON.stringify(items));
 }
+function printDiary() {
+  displayAlert("You should get the invoice popup shortly", "success")
+  document.getElementById("task-row").innerHTML=''
+  let data = JSON.parse(localStorage.getItem('list'))
+  data.forEach((element, i) => {
+    console.log(element, element.value, i)
+    var t = document.getElementById("dashTable");
+    var r = document.createElement("TR");
+    r.innerHTML = `
+                    <tr>
+                        <td scope="row">${i + 1}.</td>
+                        <td>${element.value}</td>
+                        <td> <i class="fa fa-check"></i> </button></td>
+                    </tr>
+                    `
+     t.tBodies[0].appendChild(r)
 
+  })
+  
+}
 
 function getLocalStorage() {
   return localStorage.getItem("list")
@@ -221,3 +253,7 @@ function createListItem(id, value) {
   // append child
   list.appendChild(element);
 }
+
+
+
+
